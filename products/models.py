@@ -15,7 +15,7 @@ class Product(models.Model):
 
     @property
     def is_low_stock(self):
-        return self.quantity_in_stock <= self.minimun_stock
+        return self.quantity_in_stock <= self.minimum_stock
     
 class Movement(models.Model):
     MOVEMENTS_TYPES = [
