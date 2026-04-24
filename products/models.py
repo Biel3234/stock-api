@@ -28,3 +28,13 @@ class Movement(models.Model):
     quantity = models.PositiveIntegerField()
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        if self.movement_type == 'IN':
+            self.product.quantity_in_stock += self.quantity
+        elif self.movement_type == 'OUT':
+            self.product.quantity_in_stock -= self.quantity
+
+        self.product.save()
+
+        super().save(*args, **kwargs)
