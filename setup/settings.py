@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # RestFramework
-    'rest_framework'
+    'rest_framework',
     # MyApps
     'products',
 ]
