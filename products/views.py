@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Product
@@ -16,5 +16,10 @@ class ProductListView(ListCreateAPIView):
         queryset = self.get_queryset()
         serializer = ProductListSerializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+class ProductUpdateView(RetrieveUpdateDestroyAPIView):
+    
+    queryset = Product.objects.all()
+    serializer_class = ProductCreateSerializer
 
 
