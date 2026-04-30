@@ -21,6 +21,9 @@ class Product(models.Model):
     def is_low_stock(self):
         return self.quantity_in_stock <= self.minimum_stock
     
+    def __str__(self):
+        return self.name
+    
 class Movement(models.Model):
     MOVEMENTS_TYPES = [
         ('IN', 'Entry'),
@@ -42,3 +45,7 @@ class Movement(models.Model):
         self.product.save()
 
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'Movement Type: {self.movement_type}, Product: {self.product}'
+
