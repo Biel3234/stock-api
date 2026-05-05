@@ -40,6 +40,8 @@ class Movement(models.Model):
         if self.movement_type == 'IN':
             self.product.quantity_in_stock += self.quantity
         elif self.movement_type == 'OUT':
+            if self.product.quantity_in_stock - self.quantity < 0:
+                raise ValueError('Insufficient stock')
             self.product.quantity_in_stock -= self.quantity
 
         self.product.save()
