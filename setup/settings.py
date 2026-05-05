@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'rest_framework',
     # MyApps
     'products',
+    'users',
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -80,6 +81,8 @@ DATABASES = {
         'PORT': os.environ.get('DATABASE_PORT'),
     }
 }
+
+AUTH_USER_MODEL = 'users.User'
 
 
 # Password validation
